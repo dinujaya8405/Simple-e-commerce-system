@@ -1,0 +1,40 @@
+{% extends 'shop/basic.html' %}
+{% load static %}
+{% block title %} {{product.product_name}} {% endblock %}
+{% block body %}
+<h2 style="color:rgb(230, 21, 149);text-align:center;margin-bottom:40px;margin-top:20px;">{{product.product_name}}</h2>
+<div>
+<!-- Grid row -->
+    <div class="row">
+      <!-- Grid column -->
+      <div class="col-md-6 mt-md-0 mt-3">
+        <!-- Content -->
+          <a href="category?val={{product.product_category}}" style="text-decoration:none;"><h5 style="color:brown;text-align:center;">Category: {{product.product_category}}</h5></a>
+          <h5 style="text-align:center;">{{product.product_description}}</h5>
+          <h5 style="text-align:center;color:red">Price: {{product.product_price}}LKR</h5>
+          {% if product.product_quantity > 0 %}
+          <h5 style="text-align:center;color:green">Available in stock</h5>
+          {% else %}
+          <h5 style="text-align:center;color:red"> Not available in stock</h5>
+          {% endif %}
+          <h6 style="text-align:center;color:#272d6b">Color: {{product.product_color}}</h6>
+          <h6 style="text-align:center;color:#693a48">Launched Date: {{product.product_date}}</h6>
+
+          <a href="addcart?val={{product.id}}" target="_blank" class="btn btn-primary" style="width:30rem;margin-left:3rem;background-color:brown">Add To Cart</a>
+      </div>
+
+      <!-- Grid column -->
+      <hr class="clearfix w-100 d-md-none pb-3">
+      <!-- Grid column -->
+      <div class="col-md-6 mb-md-0 mb-3">
+        <!-- Links -->
+        <ul class="list-unstyled">
+          <li >
+            <a href="" ><img src='/media/{{product.product_image}}' width="550" height="500"></a>
+          </li>
+        </ul>
+      </div>
+      <!-- Grid column -->
+</div>
+
+{% endblock %}

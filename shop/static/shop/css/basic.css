@@ -1,0 +1,16 @@
+/* Navigation bar section */
+ .bg-light{
+    background-color: rgba(233, 115, 174, 0.808) !important;
+}
+ .bg-light a{
+    color:white !important;
+}
+
+.drpdown{
+background-color:#ee0572ad !important;
+color:black !important;
+}
+
+.drpdown a{
+color:black !important;
+}

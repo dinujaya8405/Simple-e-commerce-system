@@ -1,0 +1,26 @@
+{% extends 'shop/basic.html' %}
+{% load static %}
+{% block title %} Search {% endblock %}
+{% block body %}
+{% if empty == 0 %}
+<div class="row">
+{% for i in data %}
+        <div class="col-xs-3 col-sm-3 col-md-3 mt-3">
+          <div class="card wow" style="width: 15rem;margin-left: 2rem;margin-right: 2rem;margin-bottom:2rem;">
+            <div><img src='/media/{{i.product_image}}' style="height:10rem;width:10rem;" class="card-img-top" alt="..."></div>
+            <div class="card-body">
+              <div><h6 class="card-title" style="text-align:center;font-weight: bold;">{{i.product_name|slice:":20"}}...</h6></div>
+              <div><h6 class="card-text" style="color:red!important;text-align:center">Price: {{i.product_price}}</h6></div>
+              <div style="height:2rem;"><p class="card-text">{{i.product_description|slice:":40"}}...</p></div>
+            </div>
+            <a href="productView?val={{i.id}}" target="_blank" class="btn btn-primary">More...</a>
+          </div>
+        </div>
+{% endfor %}
+    </div>
+{% else %}
+<br><br><br><br><br><br><br><br><br>
+<h1 style="color:red;text-align:center">Sorry! The product you are searching for is not available!</h1>
+<br><br><br><br><br><br><br><br><br>
+{% endif %}
+{% endblock %}
