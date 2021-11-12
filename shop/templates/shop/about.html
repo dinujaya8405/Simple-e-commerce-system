@@ -1,0 +1,31 @@
+{% extends 'shop/basic.html' %}
+{% load static %}
+{% block title %} About Us {% endblock %}
+{% block body %}
+
+<h1 style="text-align:center;color:rgb(230, 21, 149);margin-bottom:25px">About Us</h1>
+<div>
+<!-- Grid row -->
+    <div class="row">
+      <!-- Grid column -->
+      <div class="col-md-6 mt-md-0 mt-3">
+        <!-- Content -->
+        <p style="margin-left:10px;">
+          HappyShare is small business based on Sri Lanka, providing 100% made in Sri Lanka personalized products for all occasions. HappyShare has footprint with customers spanning across island wide and capability to deliver gifts to over Sri Lanka.
+        </p>
+      </div>
+      <!-- Grid column -->
+      <hr class="clearfix w-100 d-md-none pb-3">
+      <!-- Grid column -->
+      <div class="col-md-3 mb-md-0 mb-3">
+        <!-- Links -->
+        <ul class="list-unstyled">
+          <li >
+            <a href="about" ><img src="{%static 'shop/img/LOgo.jpg'%}" width="500" height="400"></a>
+          </li>
+        </ul>
+      </div>
+      <!-- Grid column -->
+</div>
+
+{% endblock %}

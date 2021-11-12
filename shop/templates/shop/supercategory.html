@@ -1,0 +1,77 @@
+{% extends 'shop/basic.html' %}
+{% load static %}
+{% block title %} {{Name}} {% endblock %}
+{% block body %}
+{% if empty == 0 %}
+ <html>
+<link rel="stylesheet" href="{%static 'shop/css/basic_product_carousel.css' %}">
+<container id="wasted"  >
+{% for j in product %}
+  <a href="category?val={{j.0}}" style="text-decoration:none"><h1 style="color:rgb(230, 21, 149); margin:2rem;text-align:center;">{{j.0}}</h1></a>
+  <div id="demo{{forloop.counter}}" class="carousel slide" data-ride="carousel">
+    <ul class="carousel-indicators">
+      <li data-target="#demo{{forloop.counter}}" data-slide-to="0" class="active"></li>
+
+      {% for i in j.2 %}
+      <li data-target="#demo{{forloop.parentloop.counter}}" data-slide-to="{{i}}"></li>
+      {% endfor %}
+
+    </ul>
+
+    <div class="Container carousel-inner no-padding " style="margin-bottom:50px;">
+      <div class="carousel-item aln active carousel_gap" style="margin-left:180px">
+        <div class="col-xs-3 col-sm-3 col-md-3">
+          <div class="card wow" style="width: 18rem;">
+            <img src='/media/{{j.1.0.product_image}}' class="card-img-top" alt="...">
+            <div class="card-body">
+              <div style="height:70px;"><h5 class="card-title" style="text-align:center">{{j.1.0.product_name|slice:":30"}}</h5></div>
+              <h5 class="card-text" style="color:red!important;text-align:center;">Price: {{j.1.0.product_price}}</h5>
+              <div style="height:120px;"><p class="card-text">{{j.1.0.product_description|slice:":100"}}...</p></div>
+            </div>
+              <a href="productView?val={{j.1.0.id}}" target="_blank" class="btn btn-primary">More...</a>
+          </div>
+        </div>
+
+        {% for i in j.1|slice:"1:"%}
+        <div class="col-xs-3 col-sm-3 col-md-3">
+          <div class="card wow" style="width: 18rem;">
+            <img src='/media/{{i.product_image}}' class="card-img-top" alt="...">
+            <div class="card-body">
+              <div style="height:70px;"><h5 class="card-title" style="text-align:center">{{i.product_name|slice:":30"}}</h5></div>
+              <h5 class="card-text" style="color:red!important;text-align:center">Price: {{i.product_price}}</h5>
+              <div style="height:120px;"><p class="card-text">{{i.product_description|slice:":100"}}...</p></div>
+            </div>
+              <a href="productView?val={{i.id}}" target="_blank" class="btn btn-primary">More...</a>
+          </div>
+        </div>
+        {% if forloop.counter|divisibleby:3 and forloop.counter > 0 and not forloop.last %}
+      </div>
+      <div class="carousel-item">
+      {% endif %}
+      {% endfor %}
+    </div>
+    </div>
+    <!-- start -->
+
+
+
+
+
+  <a class="carousel-control-prev" href="#demo{{forloop.counter}}" data-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </a>
+  <a class="carousel-control-next" href="#demo{{forloop.counter}}" data-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </a>
+  </div>
+</div>
+
+{% endfor %}
+</container>
+ </html>
+{% else %}
+<br><br><br><br><br><br><br><br><br>
+<h1 style="color:red;text-align:center">Sorry! We don't have any product available in this category!</h1>
+<br><br><br><br><br><br><br><br><br>
+{% endif %}
+{% endblock %}
